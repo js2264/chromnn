@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chromnn"
+version = "0.1.0"
+description = "Multi-omics coverage track predictions along chromosome-long DNA sequences."
+requires-python = ">=3.8"
+license = {text = "CC BY-NC 4.0"}
+readme = "README.md"
+authors = [
+    {name = "Jacques Serizay", email = "jacques.serizay@pasteur.fr"}
+]
+keywords = [
+    "multi-omics",
+    "genomics",
+    "epigenomics",
+    "CNN",
+    "Neural networks",
+    "AI",
+]
+classifiers = [
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3"
+]
+dependencies = [
+    "tensorflow[and-cuda]>=2.5.0",
+    "numpy",
+    "pyBigWig", 
+    "click>=7",
+]
+
+[project.urls]
+homepage = "https://js2264.github.io/chromnn"
+documentation = "https://js2264.github.io/chromnn"
+repository = "https://github.com/js2264/chromnn"
+
+[project.scripts]
+chromnn = "chromnn.cli:cli"
+
+[tool.hatch.version]
+path = "src/chromnn/version.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+
+[project.optional-dependencies]
+all = [
+    "biopython",
+]
+test = [
+    "coverage[toml]",
+    "isort",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+dev = [
+    "chromnn[all,test]",
+    "pre-commit",
+    "twine"
+]
+docs = [
+    "autodocsumm",
+    "sphinxcontrib-napoleon", 
+    "m2r",
+    "recommonmark",
+    "Sphinx>=1.6",
+    "sphinx-autobuild",
+    "sphinx-click",
+    "furo",
+    "pydata-sphinx-theme",
+    "myst-parser",
+]
